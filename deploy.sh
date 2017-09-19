@@ -7,5 +7,6 @@ echo "Copying resources/public..."
 cp -rf resources/public/* .
 
 echo "git push blog post..."
+git add .
 git co -am "WIP"
 git push
