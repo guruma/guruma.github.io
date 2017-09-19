@@ -42,7 +42,7 @@ http://guruma.github.io/pages-output/adoc-page/index.html
 </url>
 <url>
 <loc>
-http://guruma.github.io/posts-output/2014-10-10-adoc-post/index.html
+http://guruma.github.io/posts-output/클로저스크립트에서 매크로 작성시 주의점/index.html
 </loc>
 <lastmod>
 2017-09-20
@@ -58,7 +58,7 @@ http://guruma.github.io/tags/index.html
 </url>
 <url>
 <loc>
-http://guruma.github.io/tags-output/asciidoc/index.html
+http://guruma.github.io/tags-output/ClojureScript/index.html
 </loc>
 <lastmod>
 2017-09-20
@@ -66,7 +66,15 @@ http://guruma.github.io/tags-output/asciidoc/index.html
 </url>
 <url>
 <loc>
-http://guruma.github.io/tags-output/cryogen/index.html
+http://guruma.github.io/tags-output/compiler/index.html
+</loc>
+<lastmod>
+2017-09-20
+</lastmod>
+</url>
+<url>
+<loc>
+http://guruma.github.io/tags-output/macro/index.html
 </loc>
 <lastmod>
 2017-09-20
