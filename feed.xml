@@ -12,17 +12,17 @@ http://guruma.github.io/
 guruma's Blog
 </description>
 <lastBuildDate>
-Wed, 20 Sep 2017 02:37:22 +0900
+Wed, 20 Sep 2017 02:51:42 +0900
 </lastBuildDate>
 <generator>
 clj-rss
 </generator>
 <item>
 <guid>
-http://guruma.github.io/posts/클로저스크립트에서 매크로 작성시 주의점/
+http://guruma.github.io/posts/2017-09-20-post/
 </guid>
 <link>
-http://guruma.github.io/posts/클로저스크립트에서 매크로 작성시 주의점/
+http://guruma.github.io/posts/2017-09-20-post/
 </link>
 <title>
 클로저스트립트에서 매크로 작성시 주의점
