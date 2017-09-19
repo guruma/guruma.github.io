@@ -7,7 +7,8 @@
                            [ring/ring-devel "1.6.2"]
                            [compojure "1.6.0"]
                            [ring-server "0.5.0"]
-                           [cryogen-markdown "0.1.7"]
+                           ;[cryogen-markdown "0.1.7"]
+                           [cryogen-asciidoc "0.1.2"]
                            [cryogen-core "0.1.58"]]
             :plugins [[lein-ring "0.9.7"]]
             :main cryogen.core
