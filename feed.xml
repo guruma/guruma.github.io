@@ -12,7 +12,7 @@ http://guruma.github.io/
 guruma's Blog
 </description>
 <lastBuildDate>
-Wed, 20 Sep 2017 03:01:44 +0900
+Wed, 20 Sep 2017 15:43:06 +0900
 </lastBuildDate>
 <generator>
 clj-rss
@@ -43,9 +43,8 @@ http://guruma.github.io/posts/2017-09-20-ClojureScript-Macro/
 &lt;/tr&gt;
 &lt;/table&gt;
 &lt;/div&gt;
-&lt;div class=&quot;sect1&quot;&gt;
-&lt;h2 id=&quot;_클로저의_매크로_작성_방식&quot;&gt;클로저의 매크로 작성 방식&lt;/h2&gt;
-&lt;div class=&quot;sectionbody&quot;&gt;
+&lt;div class=&quot;sect2&quot;&gt;
+&lt;h3 id=&quot;_클로저의_매크로_작성_방식&quot;&gt;클로저의 매크로 작성 방식&lt;/h3&gt;
 &lt;div class=&quot;paragraph&quot;&gt;
 &lt;p&gt;보통 클로저(Clojure)에서는 다음과 같이 매크로를 작성합니다.&lt;/p&gt;
 &lt;/div&gt;
@@ -75,7 +74,7 @@ http://guruma.github.io/posts/2017-09-20-ClojureScript-Macro/
 &lt;/div&gt;
 &lt;div class=&quot;listingblock&quot;&gt;
 &lt;div class=&quot;content&quot;&gt;
-&lt;pre class=&quot;highlight&quot;&gt;&lt;code class=&quot;language-shell&quot; data-lang=&quot;shell&quot;&gt;$ mkdir test; cd test
+&lt;pre class=&quot;highlight&quot;&gt;&lt;code class=&quot;language-bash&quot; data-lang=&quot;bash&quot;&gt;$ mkdir test; cd test
 $ touch macro.clj core.clj&lt;/code&gt;&lt;/pre&gt;
 &lt;/div&gt;
 &lt;/div&gt;
@@ -84,7 +83,7 @@ $ touch macro.clj core.clj&lt;/code&gt;&lt;/pre&gt;
 &lt;/div&gt;
 &lt;div class=&quot;listingblock&quot;&gt;
 &lt;div class=&quot;content&quot;&gt;
-&lt;pre class=&quot;highlight&quot;&gt;&lt;code class=&quot;language-shell&quot; data-lang=&quot;shell&quot;&gt;$ curl -o clojure.jar http://central.maven.org/maven2/org/clojure/clojure/1.8.0/clojure-1.8.0.jar&lt;/code&gt;&lt;/pre&gt;
+&lt;pre class=&quot;highlight&quot;&gt;&lt;code class=&quot;language-bash&quot; data-lang=&quot;bash&quot;&gt;$ curl -o clojure.jar http://central.maven.org/maven2/org/clojure/clojure/1.8.0/clojure-1.8.0.jar&lt;/code&gt;&lt;/pre&gt;
 &lt;/div&gt;
 &lt;/div&gt;
 &lt;div class=&quot;paragraph&quot;&gt;
@@ -92,7 +91,7 @@ $ touch macro.clj core.clj&lt;/code&gt;&lt;/pre&gt;
 &lt;/div&gt;
 &lt;div class=&quot;listingblock&quot;&gt;
 &lt;div class=&quot;content&quot;&gt;
-&lt;pre class=&quot;highlight&quot;&gt;&lt;code class=&quot;language-shell&quot; data-lang=&quot;shell&quot;&gt;$ java -cp clojure.jar:. clojure.main core.clj
+&lt;pre class=&quot;highlight&quot;&gt;&lt;code class=&quot;language-bash&quot; data-lang=&quot;bash&quot;&gt;$ java -cp clojure.jar:. clojure.main core.clj
 [log: ] hello, world&lt;/code&gt;&lt;/pre&gt;
 &lt;/div&gt;
 &lt;/div&gt;
@@ -102,8 +101,8 @@ $ touch macro.clj core.clj&lt;/code&gt;&lt;/pre&gt;
 &lt;div class=&quot;paragraph&quot;&gt;
 &lt;p&gt;여기서 눈여겨 볼 것은 사실 당연한 것이지만 clojure.jar의 컴파일러도 JVM에서 실행되었고, 컴파일된 core.clj도 같은 JVM 상에서 실행되고 있다는 사실입니다.&lt;/p&gt;
 &lt;/div&gt;
-&lt;div class=&quot;sect2&quot;&gt;
-&lt;h3 id=&quot;_매크로_도우미_함수&quot;&gt;매크로 도우미 함수&lt;/h3&gt;
+&lt;div class=&quot;sect3&quot;&gt;
+&lt;h4 id=&quot;_매크로_도우미_함수&quot;&gt;매크로 도우미 함수&lt;/h4&gt;
 &lt;div class=&quot;paragraph&quot;&gt;
 &lt;p&gt;보통 매크로를 작성하다 보면 매크로에서 자체적으로 사용하는 도우미(Helper) 함수들을 만들어 사용하게 됩니다.&lt;/p&gt;
 &lt;/div&gt;
@@ -130,7 +129,7 @@ $ touch macro.clj core.clj&lt;/code&gt;&lt;/pre&gt;
 &lt;/div&gt;
 &lt;div class=&quot;listingblock&quot;&gt;
 &lt;div class=&quot;content&quot;&gt;
-&lt;pre class=&quot;highlight&quot;&gt;&lt;code class=&quot;language-shell&quot; data-lang=&quot;shell&quot;&gt;&amp;gt; java -cp clojure.jar:. clojure.main core.clj
+&lt;pre class=&quot;highlight&quot;&gt;&lt;code class=&quot;language-bash&quot; data-lang=&quot;bash&quot;&gt;$ java -cp clojure.jar:. clojure.main core.clj
 [log 1504281655322 ]:  hello, world&lt;/code&gt;&lt;/pre&gt;
 &lt;/div&gt;
 &lt;/div&gt;
@@ -142,10 +141,8 @@ $ touch macro.clj core.clj&lt;/code&gt;&lt;/pre&gt;
 &lt;/div&gt;
 &lt;/div&gt;
 &lt;/div&gt;
-&lt;/div&gt;
-&lt;div class=&quot;sect1&quot;&gt;
-&lt;h2 id=&quot;_클로저스크립트의_매크로_작성_방식&quot;&gt;클로저스크립트의 매크로 작성 방식&lt;/h2&gt;
-&lt;div class=&quot;sectionbody&quot;&gt;
+&lt;div class=&quot;sect2&quot;&gt;
+&lt;h3 id=&quot;_클로저스크립트의_매크로_작성_방식&quot;&gt;클로저스크립트의 매크로 작성 방식&lt;/h3&gt;
 &lt;div class=&quot;paragraph&quot;&gt;
 &lt;p&gt;클로저스크립트에서 매크로 작성하는 방식도 클로저와 비슷합니다. 일단 매크로는 .cljs가 아닌 .clj파일에서 정의되어야 한다는 점에서.&lt;/p&gt;
 &lt;/div&gt;
@@ -174,11 +171,11 @@ $ touch macro.clj core.clj&lt;/code&gt;&lt;/pre&gt;
 &lt;/div&gt;
 &lt;div class=&quot;listingblock&quot;&gt;
 &lt;div class=&quot;content&quot;&gt;
-&lt;pre class=&quot;highlight&quot;&gt;&lt;code class=&quot;language-shell&quot; data-lang=&quot;shell&quot;&gt;$ touch core.cljs&lt;/code&gt;&lt;/pre&gt;
+&lt;pre class=&quot;highlight&quot;&gt;&lt;code class=&quot;language-bash&quot; data-lang=&quot;bash&quot;&gt;$ touch core.cljs&lt;/code&gt;&lt;/pre&gt;
 &lt;/div&gt;
 &lt;/div&gt;
-&lt;div class=&quot;sect2&quot;&gt;
-&lt;h3 id=&quot;_클로저스크립트_코드_컴파일하기&quot;&gt;클로저스크립트 코드 컴파일하기&lt;/h3&gt;
+&lt;div class=&quot;sect3&quot;&gt;
+&lt;h4 id=&quot;_클로저스크립트_코드_컴파일하기&quot;&gt;클로저스크립트 코드 컴파일하기&lt;/h4&gt;
 &lt;div class=&quot;paragraph&quot;&gt;
 &lt;p&gt;ClojureScript 파일을 컴파일하기 위해서는 컴파일러의 build-api를 사용해야 합니다. 다음은 build-api를 사용하는 build.clj 파일입니다.&lt;/p&gt;
 &lt;/div&gt;
@@ -200,7 +197,7 @@ $ touch macro.clj core.clj&lt;/code&gt;&lt;/pre&gt;
 &lt;/div&gt;
 &lt;div class=&quot;listingblock&quot;&gt;
 &lt;div class=&quot;content&quot;&gt;
-&lt;pre class=&quot;highlight&quot;&gt;&lt;code class=&quot;language-shell&quot; data-lang=&quot;shell&quot;&gt;$ curl -LOk https://github.com/clojure/clojurescript/releases/download/r1.9.908/cljs.jar&lt;/code&gt;&lt;/pre&gt;
+&lt;pre class=&quot;highlight&quot;&gt;&lt;code class=&quot;language-bash&quot; data-lang=&quot;bash&quot;&gt;$ curl -LOk https://github.com/clojure/clojurescript/releases/download/r1.9.908/cljs.jar&lt;/code&gt;&lt;/pre&gt;
 &lt;/div&gt;
 &lt;/div&gt;
 &lt;div class=&quot;paragraph&quot;&gt;
@@ -208,7 +205,7 @@ $ touch macro.clj core.clj&lt;/code&gt;&lt;/pre&gt;
 &lt;/div&gt;
 &lt;div class=&quot;listingblock&quot;&gt;
 &lt;div class=&quot;content&quot;&gt;
-&lt;pre class=&quot;highlight&quot;&gt;&lt;code class=&quot;language-shell&quot; data-lang=&quot;shell&quot;&gt;$ java -cp cljs.jar:. clojure.main build.clj
+&lt;pre class=&quot;highlight&quot;&gt;&lt;code class=&quot;language-bash&quot; data-lang=&quot;bash&quot;&gt;$ java -cp cljs.jar:. clojure.main build.clj
 WARNING: Use of undeclared Var macro/now at line 6 ./core.cljs&lt;/code&gt;&lt;/pre&gt;
 &lt;/div&gt;
 &lt;/div&gt;
@@ -216,8 +213,8 @@ WARNING: Use of undeclared Var macro/now at line 6 ./core.cljs&lt;/code&gt;&lt;/
 &lt;p&gt;클로저 컴파일러를 실행하던 것과 다른 것은 클패스패스에 clojure.jar 대신 cljs.jar를 주고, 컴파일을 구동하기 위해 build.clj 파일을 주었다는 것입니다. 그리고 컴파일만 한다는 것입니다. 실행할 플랫폼은 JVM이 아니라 JS-VM입니다.&lt;/p&gt;
 &lt;/div&gt;
 &lt;/div&gt;
-&lt;div class=&quot;sect2&quot;&gt;
-&lt;h3 id=&quot;_클로저스크립트의_매크로_도우미_함수&quot;&gt;클로저스크립트의 매크로 도우미 함수&lt;/h3&gt;
+&lt;div class=&quot;sect3&quot;&gt;
+&lt;h4 id=&quot;_클로저스크립트의_매크로_도우미_함수&quot;&gt;클로저스크립트의 매크로 도우미 함수&lt;/h4&gt;
 &lt;div class=&quot;paragraph&quot;&gt;
 &lt;p&gt;그런데 경고가 나옵니다. &lt;code&gt;macro/now`가 선언되어 있지 않다는 경고입니다. 당연합니다. `now`는 .clj 파일에 정의된 매크로 도우미 함수라서, 컴파일러는 매크로 확장시에는 `now`함수를 볼 수 있지만, 매크로 확장의 결과를 사용할 때에는 `now&lt;/code&gt; 함수를 볼 수가 없습니다. .clj에서 정의된 함수인 `now`는 JVM상에서 실행되는 것입니다. JS-VM상에서 구동하는 .cljs의 코드들의 런타임시에는 `now`와 같은 .clj의 함수들을 당연히 사용할 수 없습니다. 단지 .clj 파일의 매크로만 사용할 수 있는데, 왜냐하면 매크로의 확장은 컴파일시에 되는데, .cljs 파일이 컴파일되는 JVM 상에서 .clj에서 정의된 함수들(매크로 포함)을 구동시킬 수 있기 때문입니다.&lt;/p&gt;
 &lt;/div&gt;
@@ -251,7 +248,7 @@ WARNING: Use of undeclared Var macro/now at line 6 ./core.cljs&lt;/code&gt;&lt;/
 &lt;/div&gt;
 &lt;div class=&quot;listingblock&quot;&gt;
 &lt;div class=&quot;content&quot;&gt;
-&lt;pre class=&quot;highlight&quot;&gt;&lt;code class=&quot;language-shell&quot; data-lang=&quot;shell&quot;&gt;$ java -cp cljs.jar:. clojure.main build.clj
+&lt;pre class=&quot;highlight&quot;&gt;&lt;code class=&quot;language-bash&quot; data-lang=&quot;bash&quot;&gt;$ java -cp cljs.jar:. clojure.main build.clj
 $ ls -al
 total 57184
 drwxr-xr-x  10 guruma  staff       340  9  2 02:25 .
@@ -269,8 +266,8 @@ drwxr-xr-x  11 guruma  staff       374  9  2 02:25 out&lt;/code&gt;&lt;/pre&gt;
 &lt;p&gt;out 폴더가 생성되는 것을 확인할 수 있습니다. out 폴더에 main.js 파일이 있으며 다음과 같이 내용입니다.&lt;/p&gt;
 &lt;/div&gt;
 &lt;/div&gt;
-&lt;div class=&quot;sect2&quot;&gt;
-&lt;h3 id=&quot;_클로저스립트립트_코드_실행하기&quot;&gt;클로저스립트립트 코드 실행하기&lt;/h3&gt;
+&lt;div class=&quot;sect3&quot;&gt;
+&lt;h4 id=&quot;_클로저스립트립트_코드_실행하기&quot;&gt;클로저스립트립트 코드 실행하기&lt;/h4&gt;
 &lt;div class=&quot;paragraph&quot;&gt;
 &lt;p&gt;main.js를 브라우저에서 실행해 보기 위해 index.html 파일을 작성합니다.&lt;/p&gt;
 &lt;/div&gt;
@@ -288,7 +285,7 @@ drwxr-xr-x  11 guruma  staff       374  9  2 02:25 out&lt;/code&gt;&lt;/pre&gt;
 &lt;/div&gt;
 &lt;div class=&quot;listingblock&quot;&gt;
 &lt;div class=&quot;content&quot;&gt;
-&lt;pre class=&quot;highlight&quot;&gt;&lt;code class=&quot;language-shell&quot; data-lang=&quot;shell&quot;&gt;$ open index.html&lt;/code&gt;&lt;/pre&gt;
+&lt;pre class=&quot;highlight&quot;&gt;&lt;code class=&quot;language-bash&quot; data-lang=&quot;bash&quot;&gt;$ open index.html&lt;/code&gt;&lt;/pre&gt;
 &lt;/div&gt;
 &lt;/div&gt;
 &lt;div class=&quot;paragraph&quot;&gt;
@@ -296,15 +293,13 @@ drwxr-xr-x  11 guruma  staff       374  9  2 02:25 out&lt;/code&gt;&lt;/pre&gt;
 &lt;/div&gt;
 &lt;div class=&quot;listingblock&quot;&gt;
 &lt;div class=&quot;content&quot;&gt;
-&lt;pre class=&quot;highlight&quot;&gt;&lt;code class=&quot;language-shell&quot; data-lang=&quot;shell&quot;&gt;[log 1504286749399 ]:  hello, world&lt;/code&gt;&lt;/pre&gt;
+&lt;pre class=&quot;highlight&quot;&gt;&lt;code class=&quot;language-bash&quot; data-lang=&quot;bash&quot;&gt;[log 1504286749399 ]:  hello, world&lt;/code&gt;&lt;/pre&gt;
 &lt;/div&gt;
 &lt;/div&gt;
 &lt;/div&gt;
 &lt;/div&gt;
-&lt;/div&gt;
-&lt;div class=&quot;sect1&quot;&gt;
-&lt;h2 id=&quot;_공통_도우미_함수&quot;&gt;공통 도우미 함수&lt;/h2&gt;
-&lt;div class=&quot;sectionbody&quot;&gt;
+&lt;div class=&quot;sect2&quot;&gt;
+&lt;h3 id=&quot;_공통_도우미_함수&quot;&gt;공통 도우미 함수&lt;/h3&gt;
 &lt;div class=&quot;paragraph&quot;&gt;
 &lt;p&gt;그런데 여기에 문제가 있습니다. &lt;code&gt;now&lt;/code&gt; 함수는 log 매크로가 컴파일시에 매크로 확장할 때 실행된다는 점입니다. 원래 의도는 log 매크로를 사용하는 코드가 런타임시에 실행될 때 &lt;code&gt;now&lt;/code&gt; 함수가 실행되어야 합니다.&lt;/p&gt;
 &lt;/div&gt;
@@ -355,7 +350,7 @@ drwxr-xr-x  11 guruma  staff       374  9  2 02:25 out&lt;/code&gt;&lt;/pre&gt;
 &lt;/div&gt;
 &lt;div class=&quot;listingblock&quot;&gt;
 &lt;div class=&quot;content&quot;&gt;
-&lt;pre class=&quot;highlight&quot;&gt;&lt;code class=&quot;language-shell&quot; data-lang=&quot;shell&quot;&gt;$ java -cp cljs.jar:. clojure.main build.clj
+&lt;pre class=&quot;highlight&quot;&gt;&lt;code class=&quot;language-bash&quot; data-lang=&quot;bash&quot;&gt;$ java -cp cljs.jar:. clojure.main build.clj
 $ open index.html&lt;/code&gt;&lt;/pre&gt;
 &lt;/div&gt;
 &lt;/div&gt;
@@ -364,14 +359,14 @@ $ open index.html&lt;/code&gt;&lt;/pre&gt;
 &lt;/div&gt;
 &lt;div class=&quot;listingblock&quot;&gt;
 &lt;div class=&quot;content&quot;&gt;
-&lt;pre class=&quot;highlight&quot;&gt;&lt;code class=&quot;language-shell&quot; data-lang=&quot;shell&quot;&gt;[log js:1504286749399 ]:  hello, world&lt;/code&gt;&lt;/pre&gt;
+&lt;pre class=&quot;highlight&quot;&gt;&lt;code class=&quot;language-bash&quot; data-lang=&quot;bash&quot;&gt;[log js:1504286749399 ]:  hello, world&lt;/code&gt;&lt;/pre&gt;
 &lt;/div&gt;
 &lt;/div&gt;
 &lt;div class=&quot;paragraph&quot;&gt;
 &lt;p&gt;확실히 이제 &lt;code&gt;now&lt;/code&gt; 함수가 브라우저상에서 호출되어 프린트되는 것을 확인할 수 있습니다.&lt;/p&gt;
 &lt;/div&gt;
-&lt;div class=&quot;sect2&quot;&gt;
-&lt;h3 id=&quot;_조건부_컴파일&quot;&gt;조건부 컴파일&lt;/h3&gt;
+&lt;div class=&quot;sect3&quot;&gt;
+&lt;h4 id=&quot;_조건부_컴파일&quot;&gt;조건부 컴파일&lt;/h4&gt;
 &lt;div class=&quot;paragraph&quot;&gt;
 &lt;p&gt;일단 &lt;code&gt;now&lt;/code&gt; 함수의 실행 시간 문제는 해결되었지만, 다른 문제가 있습니다. 같은 이름과 기능을 하는 2개가 함수가 하나는 macro.clj에 다른 하나는 util.cljs 파일에 각각 따로 정의되어 있다는 문제입니다. 이렇게 되면 관리가 어려워지게 됩니다.&lt;/p&gt;
 &lt;/div&gt;
@@ -388,8 +383,8 @@ $ open index.html&lt;/code&gt;&lt;/pre&gt;
 &lt;p&gt;하지만 이것은 cljx라는 특정 도구를 사용해야 한다는 점에서 모두가 만족할 만한 해결책은 아니었습니다. 왜냐면 라이닝언 등의 해당 툴을 사용하지 못하는 경우도 있기 때문이었습니다. 결국 조건부 컴파일은 컴파일러 자체 내에 포함되어야 했고, 실제로 Clojure 1.7과 ClojureScript 0.0-3196부터 .cljc 파일에 대해 &lt;a href=&quot;https://clojure.org/guides/reader_conditionals&quot;&gt;Reader Conditionals&lt;/a&gt;이라는 기능으로 추가되었습니다. 자세한 내용은 링크를 참고하시기 바랍니다.&lt;/p&gt;
 &lt;/div&gt;
 &lt;/div&gt;
-&lt;div class=&quot;sect2&quot;&gt;
-&lt;h3 id=&quot;__cljc와_reader_conditionals&quot;&gt;.cljc와 Reader Conditionals&lt;/h3&gt;
+&lt;div class=&quot;sect3&quot;&gt;
+&lt;h4 id=&quot;__cljc와_reader_conditionals&quot;&gt;.cljc와 Reader Conditionals&lt;/h4&gt;
 &lt;div class=&quot;paragraph&quot;&gt;
 &lt;p&gt;이제 조건부 컴파일이 가능한 매크로를 .cljc 파일에 아래와 같이 다시 작성합니다.&lt;/p&gt;
 &lt;/div&gt;
@@ -431,7 +426,7 @@ $ open index.html&lt;/code&gt;&lt;/pre&gt;
 &lt;/div&gt;
 &lt;div class=&quot;listingblock&quot;&gt;
 &lt;div class=&quot;content&quot;&gt;
-&lt;pre class=&quot;highlight&quot;&gt;&lt;code class=&quot;language-shell&quot; data-lang=&quot;shell&quot;&gt;$ mv macro.clj macro.clj.bak&lt;/code&gt;&lt;/pre&gt;
+&lt;pre class=&quot;highlight&quot;&gt;&lt;code class=&quot;language-bash&quot; data-lang=&quot;bash&quot;&gt;$ mv macro.clj macro.clj.bak&lt;/code&gt;&lt;/pre&gt;
 &lt;/div&gt;
 &lt;/div&gt;
 &lt;div class=&quot;paragraph&quot;&gt;
@@ -439,7 +434,7 @@ $ open index.html&lt;/code&gt;&lt;/pre&gt;
 &lt;/div&gt;
 &lt;div class=&quot;listingblock&quot;&gt;
 &lt;div class=&quot;content&quot;&gt;
-&lt;pre class=&quot;highlight&quot;&gt;&lt;code class=&quot;language-shell&quot; data-lang=&quot;shell&quot;&gt;$ java -cp cljs.jar:. clojure.main build.clj
+&lt;pre class=&quot;highlight&quot;&gt;&lt;code class=&quot;language-bash&quot; data-lang=&quot;bash&quot;&gt;$ java -cp cljs.jar:. clojure.main build.clj
 $ open index.html&lt;/code&gt;&lt;/pre&gt;
 &lt;/div&gt;
 &lt;/div&gt;
@@ -448,7 +443,7 @@ $ open index.html&lt;/code&gt;&lt;/pre&gt;
 &lt;/div&gt;
 &lt;div class=&quot;listingblock&quot;&gt;
 &lt;div class=&quot;content&quot;&gt;
-&lt;pre class=&quot;highlight&quot;&gt;&lt;code class=&quot;language-shell&quot; data-lang=&quot;shell&quot;&gt;Uncaught ReferenceError: macro is not defined&lt;/code&gt;&lt;/pre&gt;
+&lt;pre class=&quot;highlight&quot;&gt;&lt;code class=&quot;language-bash&quot; data-lang=&quot;bash&quot;&gt;Uncaught ReferenceError: macro is not defined&lt;/code&gt;&lt;/pre&gt;
 &lt;/div&gt;
 &lt;/div&gt;
 &lt;div class=&quot;paragraph&quot;&gt;
@@ -522,7 +517,6 @@ $ open index.html&lt;/code&gt;&lt;/pre&gt;
 (log x)
 
 (now) ;; =&amp;gt; WARNING: Use of undeclared var&lt;/code&gt;&lt;/pre&gt;
-&lt;/div&gt;
 &lt;/div&gt;
 &lt;/div&gt;
 &lt;/div&gt;
