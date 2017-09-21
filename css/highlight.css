@@ -12,7 +12,7 @@ Author: pumbur <pumbur@pumbur.net>
 
 .hljs,
 .hljs-subst {
-  color: #aaa;
+  color: #ccc;
 }
 
 .hljs-section {
@@ -26,11 +26,14 @@ Author: pumbur <pumbur@pumbur.net>
   font-style: italic;
 }
 
-.hljs-string,
+.hljs-string {
+  color: #ECC132;
+}
+
 .hljs-symbol,
 .hljs-bullet,
 .hljs-regexp {
-  color: #ECC132;
+  color: #87c38a;
 }
 
 .hljs-number,
