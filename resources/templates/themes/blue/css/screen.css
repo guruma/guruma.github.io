@@ -10,7 +10,7 @@ body {
 }
 
 .container {
-    max-width: 1000px;
+    max-width: 1200px;
 }
 
 .right {
@@ -38,15 +38,20 @@ body {
 }
 
 .navbar-default .navbar-nav li a {
-    color: #fff;
+    color: #ddd;
 }
 
 .navbar-default .navbar-nav li a:hover {
-    color: #fff;
+    color: #ddd;
     background-color: #1e879e;
 }
 
 .navbar-default .navbar-nav .active a {
+    color: #fff;
+    background-color: #219ab3;
+}
+
+.navbar-default .navbar-nav .active a:hover {
     color: #fff;
     background-color: #1e879e;
 }

@@ -11,5 +11,5 @@ cp -rf resources/public/* .
 
 echo "git push blog post..."
 git add .
-git co -am "WIP"
+git co -am "Deploy"
 git push
