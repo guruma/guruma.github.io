@@ -10,6 +10,7 @@
     <link rel="stylesheet" href="//maxcdn.bootstrapcdn.com/bootstrap/3.3.0/css/bootstrap.min.css">
     <link href="//maxcdn.bootstrapcdn.com/font-awesome/4.2.0/css/font-awesome.min.css" rel="stylesheet">
     <link rel="stylesheet" href="//cdnjs.cloudflare.com/ajax/libs/highlight.js/9.7.0/styles/default.min.css">
+    <link href="/css/my-asciidoc.css" rel="stylesheet" type="text/css" />
     <link href="/css/screen.css" rel="stylesheet" type="text/css" />
     <link href="/css/highlight.css" rel="stylesheet" type="text/css" />
 </head>
@@ -65,8 +66,19 @@
 </div>
 <div>
     
-    <div class="paragraph">
-<p>클로저스크립트(ClojureScript) 컴파일러는 cljs.jar 파일로 배포되며 JVM 상에서 실행되면서, .cljs 파일을 컴파일해서, 브라우저나 Node.js에서 실행할 .js 파일을 만드는 <a href="https://ko.wikipedia.org/wiki/%ED%81%AC%EB%A1%9C%EC%8A%A4_%EC%BB%B4%ED%8C%8C%EC%9D%BC%EB%9F%AC">크로스 컴파일러</a>(Cross Compiler)입니다. 컴파일이 JVM상에서 이루어지기 때문에, 컴파일시에 확장되어야 하는 매크로는 .clj 파일로 작성되어야 합니다. 하지만 크로스 컴파일러라는 클로저스크립트 컴파일러의 이러한 특성으로 인해 매크로 작성시 클로저(Clojure)에 비해 주의할 점이 있습니다. 특히 매크로 도우미(Helper)함수의 작성과 관련해서 주의해야 하는 점들이 있는데, 이러한 점들이 .cljc 파일에 이르러서는 숙련된 클로저 프로그래머조차 가끔 이러한 주의점을 놓치고 실수를 하기도 합니다. 사실 이러한 점은 원리를 알면 당연한 것이 되어서 쉽게 피할 수 있는 문제이기 때문에 이 글에서 차근차근 알아보도록 하겠습니다.</p>
+    <div class="sect2">
+<h3 id="_클로저스크립트_컴파일러는_크로스_컴파일러다">클로저스크립트 컴파일러는 크로스 컴파일러다</h3>
+<div class="paragraph">
+<p>클로저스크립트(ClojureScript) 컴파일러는 클로저스크립트 코드를 컴파일하여 브라우저나 Node.js에서 실행할 자바스크립트 코드를 만듭니다. 하지만 클로저스크립트 컴파일러 자체는 JVM상에서 실행되는 자바 프로그램이며, cljs.jar 파일로 배포됩니다. 즉 클로저스크립트 컴파일러는 컴파일러가 실행되는 환경은 JVM인데, 컴파일러의 실행 결과인 목적 코드가 실행되는 환경은 JS VM(브라우져나 Node.js처럼 자바스크립트를 실행시키는 VM)인 것입니다. 이처럼 컴파일러가 실행되는 환경과 그 컴파일러의 목적 코드가 실행되는 환경이 다른 컴파일러를 <a href="https://ko.wikipedia.org/wiki/%ED%81%AC%EB%A1%9C%EC%8A%A4_%EC%BB%B4%ED%8C%8C%EC%9D%BC%EB%9F%AC">크로스 컴파일러</a>(Cross Compiler)라고 합니다. 클로저스크립트 컴파일러는 크로스 컴파일러인 셈이죠. 이 때문에 발생하는 문제들이 있는데, 이 글에서는 특히 매크로와 관련된 문제들을 살펴보겠습니다.</p>
+</div>
+</div>
+<div class="sect2">
+<h3 id="_클로저스크립트_매크로는_클로저_코드이다">클로저스크립트 매크로는 클로저 코드이다</h3>
+<div class="paragraph">
+<p>아시다시피 모든 리습 언어의 매크로가 그렇듯이 클로저스크립트의 매크로도 컴파일시에 확장이 됩니다. 매크로는 컴파일러시에 수행되는 일종의 함수입니다. 즉 매크로는 코드를 입력받아 코드를 리턴하는, 사용자가 작성하고, 사용자가 사용하지만, 그 호출은 컴파일러에 의해 수행되는 함수입니다. 컴파일러는 매크로 호출을 만나면 입력받은 코드를 인수로 해서, 정의된 매크로(함수)를 수행하고, 그 수행 결과로 나온 코드를 원래의 매크로 호출 코드와 교체합니다. 이처럼 매크로 호출 코드를 매크로 출력 코드로 바꾸는 것을 매크로 확장이라고 합니다. 그런데 이 매크로 확장이 컴파일시에 되어야 하기 때문에 클로저스크립트의 매크로 확장은 목적 코드의 실행 환경인 JS VM이 아닌 컴파일러의 실행 환경인 JVM상에서 이루어집니다. 그래서 클로저스크립트의 매크로는 JVM상에서 실행될 수 있는 클로저 코드로 작성되어야 합니다. 이러한 이유로 클로저스크립트 매크로는 클로저스크립트 파일(.cljs)이 아닌 클로저 파일(.clj)로 작성됩니다.</p>
+</div>
+<div class="paragraph">
+<p>크로스 컴파일러라는 클로저스크립트 컴파일러의 이러한 특성으로 인해 일반 코드와 매크로 코드가 분리되어서 작성되어야 한다는 것은 사실 조금 번거롭기는 하지만 그리 큰 문제는 아닙니다. 어짜피 매크로 코드는 다른게 아니라 우리가 많이 익숙한 클로저 코드니까요. 문제는 매크로 도우미(Helper) 함수들입니다. 특히 .cljc 파일이 도입되면서는 숙련된 클로저 프로그래머조차 가끔 실수를 하기도 합니다. 사실 이러한 점은 원리를 알면 당연한 것이 되어서 쉽게 피할 수 있는 문제이기 때문에 이 글에서 차근차근 알아보도록 하겠습니다.</p>
 </div>
 <div class="admonitionblock note">
 <table>
@@ -79,6 +91,7 @@
 </td>
 </tr>
 </table>
+</div>
 </div>
 <div class="sect2">
 <h3 id="_클로저의_매크로_작성_방식">클로저의 매크로 작성 방식</h3>
@@ -227,7 +240,7 @@ $ touch macro.clj core.clj</code></pre>
 </div>
 </div>
 <div class="paragraph">
-<p><code>cljs.build.api`를 로딩하고, `build</code> 함수를 사용합니다. <code>build</code> 함수는 2개의 인자를 받습니다. 첫 인자는 컴파일할 소스 디렉토리이고, 두번째 인자는 컴파일러 옵션입니다. 옵션은 출력 파일을 가리키는 <code>:output-to`와 주 이름공간을 가리키는 `:main</code> 만 주어졌습니다. `:output-to`는 컴파일한 결과인 JS 코드를 out/main.js 출력 파일에 쓰라는 설정입니다.</p>
+<p><code>cljs.build.api</code> 를 로딩하고, <code>build</code> 함수를 사용합니다. <code>build</code> 함수는 2개의 인자를 받습니다. 첫 인자는 컴파일할 소스 디렉토리이고, 두번째 인자는 컴파일러 옵션입니다. 옵션은 출력 파일을 가리키는 <code>:output-to</code> 와 주 이름공간을 가리키는 <code>:main</code> 만 주어졌습니다. <code>:output-to</code> 는 컴파일한 결과인 JS 코드를 out/main.js 출력 파일에 쓰라는 설정입니다.</p>
 </div>
 <div class="paragraph">
 <p>다음과 같이 cljs.jar를 다운로드받습니다. 이 파일은 클로저스크립트를 컴파일하기 위한 build-api를 담고 있습니다.</p>
@@ -253,13 +266,13 @@ WARNING: Use of undeclared Var macro/now at line 6 ./core.cljs</code></pre>
 <div class="sect3">
 <h4 id="_클로저스크립트의_매크로_도우미_함수">클로저스크립트의 매크로 도우미 함수</h4>
 <div class="paragraph">
-<p>그런데 경고가 나옵니다. <code>macro/now`가 선언되어 있지 않다는 경고입니다. 당연합니다. `now`는 .clj 파일에 정의된 매크로 도우미 함수라서, 컴파일러는 매크로 확장시에는 `now`함수를 볼 수 있지만, 매크로 확장의 결과를 사용할 때에는 `now</code> 함수를 볼 수가 없습니다. .clj에서 정의된 함수인 `now`는 JVM상에서 실행되는 것입니다. JS-VM상에서 구동하는 .cljs의 코드들의 런타임시에는 `now`와 같은 .clj의 함수들을 당연히 사용할 수 없습니다. 단지 .clj 파일의 매크로만 사용할 수 있는데, 왜냐하면 매크로의 확장은 컴파일시에 되는데, .cljs 파일이 컴파일되는 JVM 상에서 .clj에서 정의된 함수들(매크로 포함)을 구동시킬 수 있기 때문입니다.</p>
+<p>그런데 경고가 나옵니다. <code>macro/now</code> 가 선언되어 있지 않다는 경고입니다. 당연합니다. <code>now</code> 는 .clj 파일에 정의된 매크로 도우미 함수라서, 컴파일러는 매크로 확장시에는 <code>now</code> 함수를 볼 수 있지만, 매크로 확장의 결과를 사용할 때에는 <code>now</code> 함수를 볼 수가 없습니다. .clj에서 정의된 함수인 <code>now</code> 는 JVM상에서 실행되는 것입니다. JS-VM상에서 구동하는 .cljs의 코드들의 런타임시에는 <code>now</code> 와 같은 .clj의 함수들을 당연히 사용할 수 없습니다. 단지 .clj 파일의 매크로만 사용할 수 있는데, 왜냐하면 매크로의 확장은 컴파일시에 되는데, .cljs 파일이 컴파일되는 JVM 상에서 .clj에서 정의된 함수들(매크로 포함)을 구동시킬 수 있기 때문입니다.</p>
 </div>
 <div class="paragraph">
 <p>원래 매크로는 컴파일시에 컴퍼일러에 의해 호출되는, 형식(form)을 입력받아 확장된 형식(form)을 출력하는 특수 함수이죠. 뭐&#8230;&#8203;사용자에게 코드 형성의 자유를 주기 위해 컴파일러에 의해 호출되는 콜백 함수라고 할까요?</p>
 </div>
 <div class="paragraph">
-<p>결국 도우미 함수 `now`는 JVM상에서 실행되어야 합니다. 즉 도우미 함수는 매크로 확장시에 호출되어야 합니다.</p>
+<p>결국 도우미 함수 <code>now</code> 는 JVM상에서 실행되어야 합니다. 즉 도우미 함수는 매크로 확장시에 호출되어야 합니다.</p>
 </div>
 <div class="paragraph">
 <p>다음과 같이 macro.clj 파일을 수정합니다.</p>
@@ -341,7 +354,7 @@ drwxr-xr-x  11 guruma  staff       374  9  2 02:25 out</code></pre>
 <p>그런데 여기에 문제가 있습니다. <code>now</code> 함수는 log 매크로가 컴파일시에 매크로 확장할 때 실행된다는 점입니다. 원래 의도는 log 매크로를 사용하는 코드가 런타임시에 실행될 때 <code>now</code> 함수가 실행되어야 합니다.</p>
 </div>
 <div class="paragraph">
-<p>이를 위해서는 `now`함수는 .clj가 아닌 .cljs 파일에서 정의되어야 합니다.</p>
+<p>이를 위해서는 <code>now</code> 함수는 .clj가 아닌 .cljs 파일에서 정의되어야 합니다.</p>
 </div>
 <div class="paragraph">
 <p>다음과 같이 코드가 수정되어야 합니다.</p>
@@ -380,7 +393,7 @@ drwxr-xr-x  11 guruma  staff       374  9  2 02:25 out</code></pre>
 </div>
 </div>
 <div class="paragraph">
-<p>새로운 파일 util.cljs를 만들어 <code>now</code> 함수를 클로저스크립트용으로 만들었습니다. 즉 자바스크립트의 <code>Date</code> 오브젝트를 이용했습니다. 또한 macro.clj의 <code>now</code> 함수와 구분할 수 있도록 "js:" 문자열을 앞에 덧붙였습니다. <code>log</code> 매크로에서는 <code>(util/now)</code> 형식(form)으로 수정했습니다. <code>util`이라는 이름공간을 지정해서 주어서 매크로 확장후 정확히 `util</code> 이름공간의 `now`를 호출할 수 있도록 변경하였습니다. core.cljs에서는 `require`를 이용해서 util.cljs를 로딩합니다.</p>
+<p>새로운 파일 util.cljs를 만들어 <code>now</code> 함수를 클로저스크립트용으로 만들었습니다. 즉 자바스크립트의 <code>Date</code> 오브젝트를 이용했습니다. 또한 macro.clj의 <code>now</code> 함수와 구분할 수 있도록 "js:" 문자열을 앞에 덧붙였습니다. <code>log</code> 매크로에서는 <code>(util/now)</code> 형식(form)으로 수정했습니다. <code>util</code> 이라는 이름공간을 지정해서 주어서 매크로 확장후 정확히 <code>util</code> 이름공간의 <code>now</code> 를 호출할 수 있도록 변경하였습니다. core.cljs에서는 <code>require</code> 를 이용해서 util.cljs를 로딩합니다.</p>
 </div>
 <div class="paragraph">
 <p>컴파일하고 실행해봅니다.</p>
@@ -439,7 +452,7 @@ $ open index.html</code></pre>
 </div>
 </div>
 <div class="paragraph">
-<p>`#?`이 Reader Conditionals이라는 리더 매크로입니다. 컴파일러가 .clj, .cljs, .cljc 파일을 읽어들이면 제일 먼저 여러가지 리더 매크로의 처리를 하는데, .cljc인 경우에는 추가적으로 Reader Conditionals 처리가 더해집니다. 리더 매크로의 이러한 처리들로 만들어진 form들을 컴파일러가 그 이후 단계로 처리하게 되는 것입니다.</p>
+<p><code>#?</code> 이 Reader Conditionals이라는 리더 매크로입니다. 컴파일러가 .clj, .cljs, .cljc 파일을 읽어들이면 제일 먼저 여러가지 리더 매크로의 처리를 하는데, .cljc인 경우에는 추가적으로 Reader Conditionals 처리가 더해집니다. 리더 매크로의 이러한 처리들로 만들어진 form들을 컴파일러가 그 이후 단계로 처리하게 되는 것입니다.</p>
 </div>
 <div class="paragraph">
 <p><code>#?</code> 리더 매크로 안에서 :clj로 지정된 형식(form)은 클로저 컴파일러가, :cljs로 지정된 형식(form)은 클로저스크립트 컴파일러가 사용할 수 있도록 처리됩니다.(이외에 :clr와 :default등도 있습니다)</p>
@@ -526,10 +539,10 @@ $ open index.html</code></pre>
 <p>그런데 이 도우미 함수는 .clj에서 정의된 것이기 때문에 .cljs에서 사용할 수는 없습니다.</p>
 </div>
 <div class="paragraph">
-<p><code>require-macros`는 컴파일할 때 실행됩니다. 컴파일러가 JVM상에서 실행되면서 `require-macros</code> 함수를 실행하고, 이때 foo/macro.clj 파일을 로딩해서 파싱하면서, <code>foo.macro</code> 이름공간(NameSpace)가 생성되고, 이 이름공간에 매크로 <code>log`와 도우미 함수 `now`가 등록됩니다. 컴파일러는 foo/core.cljs 에서 매크로 log 심볼을 만나게 되면, 매크로 확장을 하기위해, `foo.macro</code> 이름공간에서 <code>log</code> 매크로를 찾아서 확장을 하게 됩니다. 매크로 확장을 하면서 <code>now</code> 함수도 <code>foo.macro</code> 이름공간에서 찾아 실행하게 됩니다. 그러고나서  컴파일러는 <code>log</code> 매크로가 리턴한 <code>(println "log[" (now) "]: " ~x)`를 본래 `log</code> 매크로가 호출되던 자리에 넣게 됩니다.</p>
+<p><code>require-macros</code> 는 컴파일할 때 실행됩니다. 컴파일러가 JVM상에서 실행되면서 <code>require-macros</code> 함수를 실행하고, 이때 foo/macro.clj 파일을 로딩해서 파싱하면서, <code>foo.macro</code> 이름공간(NameSpace)가 생성되고, 이 이름공간에 매크로 <code>log</code> 와 도우미 함수 <code>now</code> 가 등록됩니다. 컴파일러는 foo/core.cljs 에서 매크로 log 심볼을 만나게 되면, 매크로 확장을 하기위해, <code>foo.macro</code> 이름공간에서 <code>log</code> 매크로를 찾아서 확장을 하게 됩니다. 매크로 확장을 하면서 <code>now</code> 함수도 <code>foo.macro</code> 이름공간에서 찾아 실행하게 됩니다. 그러고나서  컴파일러는 <code>log</code> 매크로가 리턴한 <code>(println "log[" (now) "]: " ~x)</code> 를 본래 <code>log</code> 매크로가 호출되던 자리에 넣게 됩니다.</p>
 </div>
 <div class="paragraph">
-<p>그런데 컴파일러가 도우미 함수의 심볼인 <code>now`를 만나게 되면, 매크로가 아니기 때문에, 보통의 일반적인 이름공간에서 심볼을 찾게 됩니다. 컴파일러는 일반 이름공간과 매크로 이름공간을 구분합니다. 컴파일러가 이미 `foo.core`와 `foo.macro</code> 이름공간을 둘 다 로딩한 상태이긴 하지만, `now`는 매크로 이름공간에 있기 때문에, 컴파일러는 매크로가 아닌 `now`는 일반 이름공간인 `foo.core`에서만 찾습니다. 하지만 `foo.core`에는 `now`가 선언된 바가 없기 때문에 경고가 발생합니다.</p>
+<p>그런데 컴파일러가 도우미 함수의 심볼인 <code>now</code> 를 만나게 되면, 매크로가 아니기 때문에, 보통의 일반적인 이름공간에서 심볼을 찾게 됩니다. 컴파일러는 일반 이름공간과 매크로 이름공간을 구분합니다. 컴파일러가 이미 <code>foo.core</code> 와 <code>foo.macro</code> 이름공간을 둘 다 로딩한 상태이긴 하지만, <code>now</code> 는 매크로 이름공간에 있기 때문에, 컴파일러는 매크로가 아닌 <code>now</code> 는 일반 이름공간인 <code>foo.core</code> 에서만 찾습니다. 하지만 <code>foo.core</code> 에는 <code>now</code> 가 선언된 바가 없기 때문에 경고가 발생합니다.</p>
 </div>
 <div class="listingblock">
 <div class="title">macro.cljc</div>
@@ -574,6 +587,8 @@ $ open index.html</code></pre>
 
     <div id="prev-next">
         
+        <a href="/posts/2017-09-21-ReadMe/">&laquo; ReadMe</a>
+        
         
     </div>
 
@@ -597,6 +612,8 @@ $ open index.html</code></pre>
                 <div id="recent">
                     <h3>Recent Posts</h3>
                     <ul>
+                        
+                        <li><a href="/posts/2017-09-21-ReadMe/">ReadMe</a></li>
                         
                         <li><a href="/posts/2017-09-20-ClojureScript-Macro/">클로저스트립트에서 매크로 작성시 주의점</a></li>
                         
