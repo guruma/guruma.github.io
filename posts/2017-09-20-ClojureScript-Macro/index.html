@@ -171,7 +171,7 @@ $ touch macro.clj core.clj</code></pre>
   (System/currentTimeMillis))
 
 (defmacro log [x]
-  `(println "[log" (now) "]" ~x))</code></pre>
+  `(println "[log:" (now) "]" ~x))</code></pre>
 </div>
 </div>
 <div class="paragraph">
@@ -180,7 +180,7 @@ $ touch macro.clj core.clj</code></pre>
 <div class="listingblock">
 <div class="content">
 <pre class="highlight"><code class="language-shell" data-lang="shell">$ java -cp clojure.jar:. clojure.main core.clj
-[log 1504281655322 ]:  hello, world</code></pre>
+[log: 1504281655322 ]  hello, world</code></pre>
 </div>
 </div>
 <div class="paragraph">
@@ -353,7 +353,7 @@ drwxr-xr-x  11 guruma  staff       374  9  2 02:25 out</code></pre>
 </div>
 <div class="listingblock">
 <div class="content">
-<pre class="highlight"><code class="language-shell" data-lang="shell">[log 1504286749399 ]:  hello, world</code></pre>
+<pre class="highlight"><code class="language-shell" data-lang="shell">[log: 1504286749399 ]  hello, world</code></pre>
 </div>
 </div>
 <div class="admonitionblock caution">
@@ -439,7 +439,7 @@ $ open index.html</code></pre>
 </div>
 <div class="listingblock">
 <div class="content">
-<pre class="highlight"><code class="language-shell" data-lang="shell">[log js:1504286749399 ]:  hello, world</code></pre>
+<pre class="highlight"><code class="language-shell" data-lang="shell">[log: js:1504286749399 ]  hello, world</code></pre>
 </div>
 </div>
 <div class="paragraph">
@@ -543,7 +543,7 @@ $ rm macro.clj util.cljs</code></pre>
 <p>에러 메시지를 보면 macro 라는 심볼이 정의되어 있지 않아서 발생한 에러입니다. 무슨 의미일까요?</p>
 </div>
 <div class="paragraph">
-<p>컴파일러는 <code>log</code> 매크로를 확장한 후, 그 결과 코드인 <code>(println "[log" (now) "]: " "hello, world")</code> 를 자바스크립트 코드로 변환하게 됩니다. 이를 위해서는 일단 <code>println</code> 과 <code>now</code> 심볼을 revole 해야 합니다. <code>println</code> 은 cljs.core 이름 공간에서 찾을 수 있습니다. <code>now</code> 는 macro 이름 공간에서 찾습니다. 그래서 <code>macro/now</code> 함수가 됩니다.<span class="footnote">[<a id="_footnoteref_1" class="footnote" href="#_footnote_1" title="View footnote.">1</a>]</span></p>
+<p>컴파일러는 <code>log</code> 매크로를 확장한 후, 그 결과 코드인 <code>(println "[log:" (now) "] " "hello, world")</code> 를 자바스크립트 코드로 변환하게 됩니다. 이를 위해서는 일단 <code>println</code> 과 <code>now</code> 심볼을 revole 해야 합니다. <code>println</code> 은 cljs.core 이름 공간에서 찾을 수 있습니다. <code>now</code> 는 macro 이름 공간에서 찾습니다. 그래서 <code>macro/now</code> 함수가 됩니다.<span class="footnote">[<a id="_footnoteref_1" class="footnote" href="#_footnote_1" title="View footnote.">1</a>]</span></p>
 </div>
 <div class="paragraph">
 <p>그런데 문제는 core.cljs 에서입니다. <code>log</code> 매크로가 확장된 후 <code>macro/now</code> 를 참조하게 되는데, core.cljs는 macro 이름 공간을 로딩한 적이 없기 때문에 <code>macro</code> 라는 심볼 자체를 참조할 수 없게 된 것입니다.</p>
@@ -583,7 +583,7 @@ $ open index.html</code></pre>
 </div>
 <div class="listingblock">
 <div class="content">
-<pre class="highlight"><code class="language-shell" data-lang="shell">[log 1506263117138 ]:  hello, world</code></pre>
+<pre class="highlight"><code class="language-shell" data-lang="shell">[log: 1506263117138 ]  hello, world</code></pre>
 </div>
 </div>
 <div class="paragraph">
@@ -640,7 +640,7 @@ $ open index.html</code></pre>
 <div class="listingblock">
 <div class="content">
 <pre class="highlight"><code class="language-shell" data-lang="shell">$ java -cp clojure.jar:. clojure.main core.cljc
-[log: ] hello, world</code></pre>
+[log: 1506263238473] hello, world</code></pre>
 </div>
 </div>
 <div class="paragraph">

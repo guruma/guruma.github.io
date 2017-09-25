@@ -12,7 +12,7 @@ http://guruma.github.io/
 guruma's Blog
 </description>
 <lastBuildDate>
-Mon, 25 Sep 2017 12:53:53 +0900
+Mon, 25 Sep 2017 13:03:30 +0900
 </lastBuildDate>
 <generator>
 clj-rss
@@ -133,7 +133,7 @@ $ touch macro.clj core.clj&lt;/code&gt;&lt;/pre&gt;
   (System/currentTimeMillis))
 
 (defmacro log [x]
-  `(println &quot;[log&quot; (now) &quot;]&quot; ~x))&lt;/code&gt;&lt;/pre&gt;
+  `(println &quot;[log:&quot; (now) &quot;]&quot; ~x))&lt;/code&gt;&lt;/pre&gt;
 &lt;/div&gt;
 &lt;/div&gt;
 &lt;div class=&quot;paragraph&quot;&gt;
@@ -142,7 +142,7 @@ $ touch macro.clj core.clj&lt;/code&gt;&lt;/pre&gt;
 &lt;div class=&quot;listingblock&quot;&gt;
 &lt;div class=&quot;content&quot;&gt;
 &lt;pre class=&quot;highlight&quot;&gt;&lt;code class=&quot;language-shell&quot; data-lang=&quot;shell&quot;&gt;$ java -cp clojure.jar:. clojure.main core.clj
-[log 1504281655322 ]:  hello, world&lt;/code&gt;&lt;/pre&gt;
+[log: 1504281655322 ]  hello, world&lt;/code&gt;&lt;/pre&gt;
 &lt;/div&gt;
 &lt;/div&gt;
 &lt;div class=&quot;paragraph&quot;&gt;
@@ -315,7 +315,7 @@ drwxr-xr-x  11 guruma  staff       374  9  2 02:25 out&lt;/code&gt;&lt;/pre&gt;
 &lt;/div&gt;
 &lt;div class=&quot;listingblock&quot;&gt;
 &lt;div class=&quot;content&quot;&gt;
-&lt;pre class=&quot;highlight&quot;&gt;&lt;code class=&quot;language-shell&quot; data-lang=&quot;shell&quot;&gt;[log 1504286749399 ]:  hello, world&lt;/code&gt;&lt;/pre&gt;
+&lt;pre class=&quot;highlight&quot;&gt;&lt;code class=&quot;language-shell&quot; data-lang=&quot;shell&quot;&gt;[log: 1504286749399 ]  hello, world&lt;/code&gt;&lt;/pre&gt;
 &lt;/div&gt;
 &lt;/div&gt;
 &lt;div class=&quot;admonitionblock caution&quot;&gt;
@@ -401,7 +401,7 @@ $ open index.html&lt;/code&gt;&lt;/pre&gt;
 &lt;/div&gt;
 &lt;div class=&quot;listingblock&quot;&gt;
 &lt;div class=&quot;content&quot;&gt;
-&lt;pre class=&quot;highlight&quot;&gt;&lt;code class=&quot;language-shell&quot; data-lang=&quot;shell&quot;&gt;[log js:1504286749399 ]:  hello, world&lt;/code&gt;&lt;/pre&gt;
+&lt;pre class=&quot;highlight&quot;&gt;&lt;code class=&quot;language-shell&quot; data-lang=&quot;shell&quot;&gt;[log: js:1504286749399 ]  hello, world&lt;/code&gt;&lt;/pre&gt;
 &lt;/div&gt;
 &lt;/div&gt;
 &lt;div class=&quot;paragraph&quot;&gt;
@@ -505,7 +505,7 @@ $ rm macro.clj util.cljs&lt;/code&gt;&lt;/pre&gt;
 &lt;p&gt;에러 메시지를 보면 macro 라는 심볼이 정의되어 있지 않아서 발생한 에러입니다. 무슨 의미일까요?&lt;/p&gt;
 &lt;/div&gt;
 &lt;div class=&quot;paragraph&quot;&gt;
-&lt;p&gt;컴파일러는 &lt;code&gt;log&lt;/code&gt; 매크로를 확장한 후, 그 결과 코드인 &lt;code&gt;(println &quot;[log&quot; (now) &quot;]: &quot; &quot;hello, world&quot;)&lt;/code&gt; 를 자바스크립트 코드로 변환하게 됩니다. 이를 위해서는 일단 &lt;code&gt;println&lt;/code&gt; 과 &lt;code&gt;now&lt;/code&gt; 심볼을 revole 해야 합니다. &lt;code&gt;println&lt;/code&gt; 은 cljs.core 이름 공간에서 찾을 수 있습니다. &lt;code&gt;now&lt;/code&gt; 는 macro 이름 공간에서 찾습니다. 그래서 &lt;code&gt;macro/now&lt;/code&gt; 함수가 됩니다.&lt;span class=&quot;footnote&quot;&gt;[&lt;a id=&quot;_footnoteref_1&quot; class=&quot;footnote&quot; href=&quot;#_footnote_1&quot; title=&quot;View footnote.&quot;&gt;1&lt;/a&gt;]&lt;/span&gt;&lt;/p&gt;
+&lt;p&gt;컴파일러는 &lt;code&gt;log&lt;/code&gt; 매크로를 확장한 후, 그 결과 코드인 &lt;code&gt;(println &quot;[log:&quot; (now) &quot;] &quot; &quot;hello, world&quot;)&lt;/code&gt; 를 자바스크립트 코드로 변환하게 됩니다. 이를 위해서는 일단 &lt;code&gt;println&lt;/code&gt; 과 &lt;code&gt;now&lt;/code&gt; 심볼을 revole 해야 합니다. &lt;code&gt;println&lt;/code&gt; 은 cljs.core 이름 공간에서 찾을 수 있습니다. &lt;code&gt;now&lt;/code&gt; 는 macro 이름 공간에서 찾습니다. 그래서 &lt;code&gt;macro/now&lt;/code&gt; 함수가 됩니다.&lt;span class=&quot;footnote&quot;&gt;[&lt;a id=&quot;_footnoteref_1&quot; class=&quot;footnote&quot; href=&quot;#_footnote_1&quot; title=&quot;View footnote.&quot;&gt;1&lt;/a&gt;]&lt;/span&gt;&lt;/p&gt;
 &lt;/div&gt;
 &lt;div class=&quot;paragraph&quot;&gt;
 &lt;p&gt;그런데 문제는 core.cljs 에서입니다. &lt;code&gt;log&lt;/code&gt; 매크로가 확장된 후 &lt;code&gt;macro/now&lt;/code&gt; 를 참조하게 되는데, core.cljs는 macro 이름 공간을 로딩한 적이 없기 때문에 &lt;code&gt;macro&lt;/code&gt; 라는 심볼 자체를 참조할 수 없게 된 것입니다.&lt;/p&gt;
@@ -545,7 +545,7 @@ $ open index.html&lt;/code&gt;&lt;/pre&gt;
 &lt;/div&gt;
 &lt;div class=&quot;listingblock&quot;&gt;
 &lt;div class=&quot;content&quot;&gt;
-&lt;pre class=&quot;highlight&quot;&gt;&lt;code class=&quot;language-shell&quot; data-lang=&quot;shell&quot;&gt;[log 1506263117138 ]:  hello, world&lt;/code&gt;&lt;/pre&gt;
+&lt;pre class=&quot;highlight&quot;&gt;&lt;code class=&quot;language-shell&quot; data-lang=&quot;shell&quot;&gt;[log: 1506263117138 ]  hello, world&lt;/code&gt;&lt;/pre&gt;
 &lt;/div&gt;
 &lt;/div&gt;
 &lt;div class=&quot;paragraph&quot;&gt;
@@ -602,7 +602,7 @@ $ open index.html&lt;/code&gt;&lt;/pre&gt;
 &lt;div class=&quot;listingblock&quot;&gt;
 &lt;div class=&quot;content&quot;&gt;
 &lt;pre class=&quot;highlight&quot;&gt;&lt;code class=&quot;language-shell&quot; data-lang=&quot;shell&quot;&gt;$ java -cp clojure.jar:. clojure.main core.cljc
-[log: ] hello, world&lt;/code&gt;&lt;/pre&gt;
+[log: 1506263238473] hello, world&lt;/code&gt;&lt;/pre&gt;
 &lt;/div&gt;
 &lt;/div&gt;
 &lt;div class=&quot;paragraph&quot;&gt;
