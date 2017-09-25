@@ -12,7 +12,7 @@ http://guruma.github.io/
 guruma's Blog
 </description>
 <lastBuildDate>
-Mon, 25 Sep 2017 13:03:30 +0900
+Mon, 25 Sep 2017 17:04:44 +0900
 </lastBuildDate>
 <generator>
 clj-rss
@@ -259,7 +259,7 @@ WARNING: Use of undeclared Var macro/now at line 6 ./core.cljs&lt;/code&gt;&lt;/
 
 (defmacro log [x]
   (let [t# (now)] ; &amp;lt;== now는 매크로 확장시에 호출된다.
-  `(println &quot;[log&quot; ~t# &quot;]&quot; ~x)))&lt;/code&gt;&lt;/pre&gt;
+  `(println &quot;[log:&quot; ~t# &quot;]&quot; ~x)))&lt;/code&gt;&lt;/pre&gt;
 &lt;/div&gt;
 &lt;/div&gt;
 &lt;div class=&quot;paragraph&quot;&gt;
@@ -369,7 +369,7 @@ $ java -cp cljs.jar:. clojure.main build.clj&lt;/code&gt;&lt;/pre&gt;
   (System/currentTimeMillis))
 
 (defmacro log [x]
-  `(println &quot;[log&quot; (util/now) &quot;]&quot; ~x))&lt;/code&gt;&lt;/pre&gt;
+  `(println &quot;[log:&quot; (util/now) &quot;]&quot; ~x))&lt;/code&gt;&lt;/pre&gt;
 &lt;/div&gt;
 &lt;/div&gt;
 &lt;div class=&quot;listingblock&quot;&gt;
@@ -440,7 +440,7 @@ $ open index.html&lt;/code&gt;&lt;/pre&gt;
      :cljs (js/Date.now)))
 
 (defmacro log [x]
-  `(println &quot;[log&quot; (now) &quot;]: &quot; ~x))&lt;/code&gt;&lt;/pre&gt;
+  `(println &quot;[log:&quot; (now) &quot; &quot; ~x))&lt;/code&gt;&lt;/pre&gt;
 &lt;/div&gt;
 &lt;/div&gt;
 &lt;div class=&quot;paragraph&quot;&gt;
@@ -622,7 +622,7 @@ $ open index.html&lt;/code&gt;&lt;/pre&gt;
 &lt;/div&gt;
 &lt;div class=&quot;listingblock&quot;&gt;
 &lt;div class=&quot;content&quot;&gt;
-&lt;pre class=&quot;highlight&quot;&gt;&lt;code class=&quot;language-shell&quot; data-lang=&quot;shell&quot;&gt;[log 1506266364171 ]:  hello, world&lt;/code&gt;&lt;/pre&gt;
+&lt;pre class=&quot;highlight&quot;&gt;&lt;code class=&quot;language-shell&quot; data-lang=&quot;shell&quot;&gt;[log: 1506266364171 ]  hello, world&lt;/code&gt;&lt;/pre&gt;
 &lt;/div&gt;
 &lt;/div&gt;
 &lt;div class=&quot;paragraph&quot;&gt;

@@ -297,7 +297,7 @@ WARNING: Use of undeclared Var macro/now at line 6 ./core.cljs</code></pre>
 
 (defmacro log [x]
   (let [t# (now)] ; &lt;== now는 매크로 확장시에 호출된다.
-  `(println "[log" ~t# "]" ~x)))</code></pre>
+  `(println "[log:" ~t# "]" ~x)))</code></pre>
 </div>
 </div>
 <div class="paragraph">
@@ -407,7 +407,7 @@ $ java -cp cljs.jar:. clojure.main build.clj</code></pre>
   (System/currentTimeMillis))
 
 (defmacro log [x]
-  `(println "[log" (util/now) "]" ~x))</code></pre>
+  `(println "[log:" (util/now) "]" ~x))</code></pre>
 </div>
 </div>
 <div class="listingblock">
@@ -478,7 +478,7 @@ $ open index.html</code></pre>
      :cljs (js/Date.now)))
 
 (defmacro log [x]
-  `(println "[log" (now) "]: " ~x))</code></pre>
+  `(println "[log:" (now) " " ~x))</code></pre>
 </div>
 </div>
 <div class="paragraph">
@@ -660,7 +660,7 @@ $ open index.html</code></pre>
 </div>
 <div class="listingblock">
 <div class="content">
-<pre class="highlight"><code class="language-shell" data-lang="shell">[log 1506266364171 ]:  hello, world</code></pre>
+<pre class="highlight"><code class="language-shell" data-lang="shell">[log: 1506266364171 ]  hello, world</code></pre>
 </div>
 </div>
 <div class="paragraph">
