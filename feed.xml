@@ -12,7 +12,7 @@ http://guruma.github.io/
 guruma's Blog
 </description>
 <lastBuildDate>
-Mon, 25 Sep 2017 01:19:12 +0900
+Mon, 25 Sep 2017 10:35:50 +0900
 </lastBuildDate>
 <generator>
 clj-rss
@@ -511,7 +511,7 @@ $ rm macro.clj util.cljs&lt;/code&gt;&lt;/pre&gt;
 &lt;p&gt;그런데 문제는 core.cljs 에서 입니다. &lt;code&gt;log&lt;/code&gt; 매크로가 확장된 후 &lt;code&gt;macro/now&lt;/code&gt; 를 참조하게 되는데, core.cljs는 macro 이름공간을 로딩한 적이 없기 때문에 &lt;code&gt;macro&lt;/code&gt; 라는 심볼 자체를 참조할 없게 된 것입니다.&lt;/p&gt;
 &lt;/div&gt;
 &lt;div class=&quot;paragraph&quot;&gt;
-&lt;p&gt;이러한 이유때문에 컴파일러가 &lt;code&gt;macro/now&lt;/code&gt; 라는 심볼이 정의되지 않았다는 에러(Uncaught ReferenceError: macro is not defined)를 내는 것입니다.&lt;/p&gt;
+&lt;p&gt;이러한 이유때문에 컴파일러가 &lt;code&gt;macro/now&lt;/code&gt; 라는 심볼이 정의되지 않았다는 에러(Uncaught ReferenceError: macro is not defined)를 내는 것입니다.&lt;span class=&quot;footnote&quot;&gt;[&lt;a id=&quot;_footnoteref_1&quot; class=&quot;footnote&quot; href=&quot;#_footnote_1&quot; title=&quot;View footnote.&quot;&gt;1&lt;/a&gt;]&lt;/span&gt;&lt;/p&gt;
 &lt;/div&gt;
 &lt;div class=&quot;listingblock&quot;&gt;
 &lt;div class=&quot;title&quot;&gt;core.cljs&lt;/div&gt;
@@ -636,6 +636,12 @@ $ open index.html&lt;/code&gt;&lt;/pre&gt;
 
 (log &quot;hello, world&quot;)&lt;/code&gt;&lt;/pre&gt;
 &lt;/div&gt;
+&lt;/div&gt;
+&lt;/div&gt;
+&lt;div id=&quot;footnotes&quot;&gt;
+&lt;hr&gt;
+&lt;div class=&quot;footnote&quot; id=&quot;_footnote_1&quot;&gt;
+&lt;a href=&quot;#_footnoteref_1&quot;&gt;1&lt;/a&gt; 지금 설명을 이렇게 하고 있지만 사실 저도 여기서 이상한 점이 있습니다. 제 생각에는 브라우저 콘솔창에서 에러가 나기 전에 컴파일할 때 경고가 나는 것이 맞지 않을까 해서입니다. 왜냐하면 core.cljs에서 :require-macros로 macro.cljc를 로딩하면 클로저 코드로 로딩할 것이므로 now 함수는 클로저 함수일 것이고, 그렇다면 매크로 확장 결과에서의 now 심볼은 클로저스크립트일 것이므로, 컴파일러는 now 심볼을 resolve 하는데 실패하여야 하기 때문입니다. 실제로 우리가 위에서 macro.clj 를 core.cljs에서 처음 로딩할 때 정확히 그랬습니다. 그런데 macro.cljc를 로딩할 때는 경고가 나지 않는 이유는 결국 클로저스크립트 컴파일러가 macro.cljc를 클로저스크립트로도 로딩했다는 이야기가 됩니다. 실제로 이런 질문을 &lt;a href=&quot;https://groups.google.com/forum/#!topic/clojurescript/Wi3xP8KVzzo&quot;&gt;클로저스크립트 구글 그룹스&lt;/a&gt;에 올렸는데 아직 답을 얻지 못하고 있네요. 답을 알게 되면 알려드리도록 하겠습니다.(혹시 답을 아시는 분이 계시다면 알려주시면 감사하겠습니다)
 &lt;/div&gt;
 &lt;/div&gt;
 </description>
