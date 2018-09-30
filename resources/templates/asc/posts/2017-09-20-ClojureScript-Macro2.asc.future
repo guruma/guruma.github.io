@@ -1,0 +1,28 @@
+{:title "클로저스트립트에서 매크로 작성시 주의점2"
+ :layout :post
+ :date "2018-08-28"
+ :tags  ["ClojureScript" "macro" "compiler"]
+ :toc false
+}
+
+
+=== 조건부 컴파일 중복
+
+[source, clojure]
+.macro.clj
+....
+(ns macro)
+
+(defmacro log [x]
+  `(println "[log: ]" ~x))
+....
+
+[source, clojure]
+.core.clj
+....
+(ns core
+  (:require [macro :refer [log]]))
+
+(log "hello, world")
+....
+
