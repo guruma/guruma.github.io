@@ -1,3 +1,4 @@
+/*  copyed from foundaton.css by psk810  */
 /*! normalize.css v2.1.2 | MIT License | git.io/normalize */
 /* ========================================================================== HTML5 display definitions ========================================================================== */
 /** Correct `block` display not defined in IE 8/9. */
@@ -682,7 +683,7 @@ a span.icon > .fa { cursor: inherit; }
 .admonitionblock td.icon .icon-caution:before { content: "\f06d"; color: #bf3400; }
 .admonitionblock td.icon .icon-important:before { content: "\f06a"; color: #bf0000; }
 
-.conum[data-value] { display: inline-block; color: #fff !important; background-color: #555555; -webkit-border-radius: 100px; border-radius: 100px; text-align: center; font-size: 0.75em; width: 1.67em; height: 1.67em; line-height: 1.67em; font-family: "Open Sans", "DejaVu Sans", sans-serif; font-style: normal; font-weight: bold; }
+.conum[data-value] { display: inline-block; color: #fff !important; background-color: #555555; -webkit-border-radius: 100px; border-radius: 100px; text-align: center; font-size: 0.75em; width: 1.67em; height: 1.67em; line-height: 1.90em; font-family: "Open Sans", "DejaVu Sans", sans-serif; font-style: normal; font-weight: bold; }
 .conum[data-value] * { color: #fff !important; }
 .conum[data-value] + b { display: none; }
 .conum[data-value]:after { content: attr(data-value); }
@@ -691,6 +692,19 @@ pre .conum[data-value] { position: relative; top: -0.125em; }
 b.conum * { color: inherit !important; }
 
 .conum:not([data-value]):empty { display: none; }
+
+
+/*
+.conum[data-value]{display:inline-block;color:#fff!important;background-color:rgba(0,0,0,.8);-webkit-border-radius:100px;border-radius:100px;text-align:center;font-size:.75em;width:1.67em;height:1.67em;line-height:1.67em;font-family:"Open Sans","DejaVu Sans",sans-serif;font-style:normal;font-weight:bold}
+.conum[data-value] *{color:#fff!important}
+.conum[data-value]+b{display:none}
+.conum[data-value]::after{content:attr(data-value)}
+pre .conum[data-value]{position:relative;top:-.125em}
+b.conum *{color:inherit!important}
+.conum:not([data-value]):empty{display:none}
+*/
+
+
 
 #header > h1 { border-bottom-style: solid; }
 
@@ -703,5 +717,11 @@ b.conum * { color: inherit !important; }
 
 .listingblock pre, .literalblock pre { background: -moz-linear-gradient(top, white 0%, #f4f4f4 100%); background: -webkit-linear-gradient(top, white 0%, #f4f4f4 100%); background: linear-gradient(to bottom, #ffffff 0%, #f4f4f4 100%); -webkit-box-shadow: 0 2px 5px rgba(0, 0, 0, 0.15); box-shadow: 0 2px 5px rgba(0, 0, 0, 0.15); }
 
-.sidebarblock { background: none; border: none; -webkit-box-shadow: 0 0 5px rgba(177, 0, 93, 0.5); box-shadow: 0 0 5px rgba(177, 0, 93, 0.5); }
-.sidebarblock > .content > .title { color: #181818; }
+.sidebarblock { background: #f8f8f7; border-style: solid; border-width: 1px; border-color: border-radius: 4px; -webkit-border-radius: 4px; }
+/*.sidebarblock { background: none; border: none; -webkit-box-shadow: 0 0 5px rgba(118, 137, 4, 0.5); box-shadow: 0 0 5px rgba(118, 137, 4, 0.5); }*/
+.sidebarblock > .content > .title { color: #181818; text-align: center}
+
+table#gromit td.valign-bottom { background: #f9f9f9; padding-bottom: 0px}
+table#gromit td.valign-bottom p { margin-bottom: 0px}
+table#gromit td.valign-top { background: #f9f9f9; padding-top: 0px}
+table#gromit td.valign-top .imageblock { margin-bottom: 5px}

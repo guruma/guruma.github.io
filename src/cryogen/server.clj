@@ -3,13 +3,15 @@
             [compojure.route :as route]
             [ring.util.response :refer [redirect resource-response]]
             [ring.util.codec :refer [url-decode]]
+            [cryogen.asciidoc :as asciidoc]
             [cryogen-core.watcher :refer [start-watcher!]]
             [cryogen-core.plugins :refer [load-plugins]]
             [cryogen-core.compiler :refer [compile-assets-timed read-config]]
             [cryogen-core.io :refer [path]]))
 
 (defn init []
-  (load-plugins)
+  ;(load-plugins)
+  (asciidoc/init)
   (compile-assets-timed)
   (let [ignored-files (-> (read-config) :ignored-files)]
     (start-watcher! "resources/templates" ignored-files compile-assets-timed)))
