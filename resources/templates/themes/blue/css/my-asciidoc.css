@@ -721,7 +721,16 @@ b.conum *{color:inherit!important}
 /*.sidebarblock { background: none; border: none; -webkit-box-shadow: 0 0 5px rgba(118, 137, 4, 0.5); box-shadow: 0 0 5px rgba(118, 137, 4, 0.5); }*/
 .sidebarblock > .content > .title { color: #181818; text-align: center}
 
+/* continuation. gromit animation. title and caption.  */
 table#gromit td.valign-bottom { background: #f9f9f9; padding-bottom: 0px}
 table#gromit td.valign-bottom p { margin-bottom: 0px}
 table#gromit td.valign-top { background: #f9f9f9; padding-top: 0px}
 table#gromit td.valign-top .imageblock { margin-bottom: 5px}
+
+
+/* continuation captured code coloring */
+.cont1 { background-color: #c1aef9; }
+.cont2 { background-color: #c0efc4; }
+
+
+
