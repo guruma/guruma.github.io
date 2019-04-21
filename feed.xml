@@ -12,7 +12,7 @@ http://guruma.github.io/
 guruma's Blog
 </description>
 <lastBuildDate>
-Sun, 21 Apr 2019 23:14:12 +0900
+Sun, 21 Apr 2019 23:34:25 +0900
 </lastBuildDate>
 <generator>
 clj-rss
@@ -1264,19 +1264,29 @@ table#gromit tr:nth-child(3) p { line-height: 1.2; }
 &lt;div class=&quot;paragraph&quot;&gt;
 &lt;p&gt;이제 똑같은 방식으로 &lt;a href=&quot;#yang-cont&quot;&gt;예제 19&lt;/a&gt;의 양 후속문 함수도 다음과 같이 바꿀 수 있다.&lt;/p&gt;
 &lt;/div&gt;
-&lt;div class=&quot;listingblock&quot;&gt;
+&lt;div id=&quot;yang-cont-pseudo&quot; class=&quot;listingblock&quot;&gt;
 &lt;div class=&quot;title&quot;&gt;예제 22. 양 후속문 함수(&lt;a href=&quot;#yang-cont&quot;&gt;예제 19&lt;/a&gt;)를 간략화한 슈도 코드&lt;/div&gt;
 &lt;div class=&quot;content&quot;&gt;
-&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;[[yang-cont-pseudo]
-----
-   [음=?]             &lt;i class=&quot;conum&quot; data-value=&quot;2&quot;&gt;&lt;/i&gt;&lt;b&gt;(2)&lt;/b&gt;
+&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;   [음=?]             &lt;i class=&quot;conum&quot; data-value=&quot;2&quot;&gt;&lt;/i&gt;&lt;b&gt;(2)&lt;/b&gt;
 *  양 &amp;lt;- v            &lt;i class=&quot;conum&quot; data-value=&quot;1&quot;&gt;&lt;/i&gt;&lt;b&gt;(1)&lt;/b&gt;
-   (음 양) =&amp;gt; (? v)   &lt;i class=&quot;conum&quot; data-value=&quot;3&quot;&gt;&lt;/i&gt;&lt;b&gt;(3)&lt;/b&gt;
-----
-&amp;lt;1&amp;gt; 양 후속문 함수 ``B``가 호출되면, 인자는 인수 ``v``로 들어와서 ``양``에 저장된다. v 인자 대입법이 적용된다. 문자 ``*``이 찍힌다.
-&amp;lt;2&amp;gt; ``음``은 양 후속문 ``B`` 호출시의 컨텍스트에서 이미 정해진 값이다. 현재 여기서는 컨텍스트에 무엇이 저장되어 있는지 모르므로 ``?``로 표기한다.
-&amp;lt;3&amp;gt; ``음``은 ``?``이고, ``양``은 ``v``이므로, 호출 ``(음 양)``은 ``(? v)``가 된다.&lt;/code&gt;&lt;/pre&gt;
+   (음 양) =&amp;gt; (? v)   &lt;i class=&quot;conum&quot; data-value=&quot;3&quot;&gt;&lt;/i&gt;&lt;b&gt;(3)&lt;/b&gt;&lt;/code&gt;&lt;/pre&gt;
 &lt;/div&gt;
+&lt;/div&gt;
+&lt;div class=&quot;colist arabic&quot;&gt;
+&lt;table&gt;
+&lt;tr&gt;
+&lt;td&gt;&lt;i class=&quot;conum&quot; data-value=&quot;1&quot;&gt;&lt;/i&gt;&lt;b&gt;1&lt;/b&gt;&lt;/td&gt;
+&lt;td&gt;양 후속문 함수 &lt;code&gt;B&lt;/code&gt;가 호출되면, 인자는 인수 &lt;code&gt;v&lt;/code&gt;로 들어와서 &lt;code&gt;양&lt;/code&gt;에 저장된다. v 인자 대입법이 적용된다. 문자 &lt;code&gt;*&lt;/code&gt;이 찍힌다.&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td&gt;&lt;i class=&quot;conum&quot; data-value=&quot;2&quot;&gt;&lt;/i&gt;&lt;b&gt;2&lt;/b&gt;&lt;/td&gt;
+&lt;td&gt;&lt;code&gt;음&lt;/code&gt;은 양 후속문 &lt;code&gt;B&lt;/code&gt; 호출시의 컨텍스트에서 이미 정해진 값이다. 현재 여기서는 컨텍스트에 무엇이 저장되어 있는지 모르므로 &lt;code&gt;?&lt;/code&gt;로 표기한다.&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td&gt;&lt;i class=&quot;conum&quot; data-value=&quot;3&quot;&gt;&lt;/i&gt;&lt;b&gt;3&lt;/b&gt;&lt;/td&gt;
+&lt;td&gt;&lt;code&gt;음&lt;/code&gt;은 &lt;code&gt;?&lt;/code&gt;이고, &lt;code&gt;양&lt;/code&gt;은 &lt;code&gt;v&lt;/code&gt;이므로, 호출 &lt;code&gt;(음 양)&lt;/code&gt;은 &lt;code&gt;(? v)&lt;/code&gt;가 된다.&lt;/td&gt;
+&lt;/tr&gt;
+&lt;/table&gt;
 &lt;/div&gt;
 &lt;div class=&quot;paragraph&quot;&gt;
 &lt;p&gt;자 이제 모든 준비가 끝났다. 음양을 구동시켜 보자.&lt;/p&gt;

@@ -1302,19 +1302,29 @@ table#gromit tr:nth-child(3) p { line-height: 1.2; }
 <div class="paragraph">
 <p>이제 똑같은 방식으로 <a href="#yang-cont">예제 19</a>의 양 후속문 함수도 다음과 같이 바꿀 수 있다.</p>
 </div>
-<div class="listingblock">
+<div id="yang-cont-pseudo" class="listingblock">
 <div class="title">예제 22. 양 후속문 함수(<a href="#yang-cont">예제 19</a>)를 간략화한 슈도 코드</div>
 <div class="content">
-<pre class="highlight"><code>[[yang-cont-pseudo]
-----
-   [음=?]             <i class="conum" data-value="2"></i><b>(2)</b>
+<pre class="highlight"><code>   [음=?]             <i class="conum" data-value="2"></i><b>(2)</b>
 *  양 &lt;- v            <i class="conum" data-value="1"></i><b>(1)</b>
-   (음 양) =&gt; (? v)   <i class="conum" data-value="3"></i><b>(3)</b>
-----
-&lt;1&gt; 양 후속문 함수 ``B``가 호출되면, 인자는 인수 ``v``로 들어와서 ``양``에 저장된다. v 인자 대입법이 적용된다. 문자 ``*``이 찍힌다.
-&lt;2&gt; ``음``은 양 후속문 ``B`` 호출시의 컨텍스트에서 이미 정해진 값이다. 현재 여기서는 컨텍스트에 무엇이 저장되어 있는지 모르므로 ``?``로 표기한다.
-&lt;3&gt; ``음``은 ``?``이고, ``양``은 ``v``이므로, 호출 ``(음 양)``은 ``(? v)``가 된다.</code></pre>
+   (음 양) =&gt; (? v)   <i class="conum" data-value="3"></i><b>(3)</b></code></pre>
 </div>
+</div>
+<div class="colist arabic">
+<table>
+<tr>
+<td><i class="conum" data-value="1"></i><b>1</b></td>
+<td>양 후속문 함수 <code>B</code>가 호출되면, 인자는 인수 <code>v</code>로 들어와서 <code>양</code>에 저장된다. v 인자 대입법이 적용된다. 문자 <code>*</code>이 찍힌다.</td>
+</tr>
+<tr>
+<td><i class="conum" data-value="2"></i><b>2</b></td>
+<td><code>음</code>은 양 후속문 <code>B</code> 호출시의 컨텍스트에서 이미 정해진 값이다. 현재 여기서는 컨텍스트에 무엇이 저장되어 있는지 모르므로 <code>?</code>로 표기한다.</td>
+</tr>
+<tr>
+<td><i class="conum" data-value="3"></i><b>3</b></td>
+<td><code>음</code>은 <code>?</code>이고, <code>양</code>은 <code>v</code>이므로, 호출 <code>(음 양)</code>은 <code>(? v)</code>가 된다.</td>
+</tr>
+</table>
 </div>
 <div class="paragraph">
 <p>자 이제 모든 준비가 끝났다. 음양을 구동시켜 보자.</p>
