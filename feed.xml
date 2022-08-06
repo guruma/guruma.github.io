@@ -12,7 +12,7 @@ http://guruma.github.io/
 guruma's Blog
 </description>
 <lastBuildDate>
-Sun, 21 Apr 2019 23:34:25 +0900
+Sat, 06 Aug 2022 16:15:08 +0900
 </lastBuildDate>
 <generator>
 clj-rss
@@ -206,16 +206,16 @@ table#gromit tr:nth-child(3) p { line-height: 1.2; }
 &lt;div class=&quot;listingblock&quot;&gt;
 &lt;div class=&quot;title&quot;&gt;예제 4. 후속문 실체화 1&lt;/div&gt;
 &lt;div class=&quot;content&quot;&gt;
-&lt;pre class=&quot;highlight&quot;&gt;&lt;code class=&quot;language-javascript&quot; data-lang=&quot;javascript&quot;&gt;  function add2(x) { c = x + 2; }
+&lt;pre class=&quot;highlight&quot;&gt;&lt;code class=&quot;language-javascript&quot; data-lang=&quot;javascript&quot;&gt;  function cont_add_2(x) { c = x + 2; }
 
   var a = 10;
   var b = a + 5;
   var c;
-  add2(b)&lt;/code&gt;&lt;/pre&gt;
+  cont_add_2(b)&lt;/code&gt;&lt;/pre&gt;
 &lt;/div&gt;
 &lt;/div&gt;
 &lt;div class=&quot;paragraph&quot;&gt;
-&lt;p&gt;암묵적 후속문이었던 &lt;code&gt;var c = b + 2&lt;/code&gt;를 &lt;code&gt;add2&lt;/code&gt;라는 함수로 실체화하면서 원래 후속문이 있던 자리에서는 &lt;code&gt;add2&lt;/code&gt;함수의 호출로 바뀐다.&lt;/p&gt;
+&lt;p&gt;암묵적 후속문이었던 &lt;code&gt;var c = b + 2&lt;/code&gt;를 &lt;code&gt;cont_add_2&lt;/code&gt;라는 함수로 실체화하면서 원래 후속문이 있던 자리에서는 &lt;code&gt;cont_add_2&lt;/code&gt;함수의 호출로 바뀐다.&lt;/p&gt;
 &lt;/div&gt;
 &lt;div class=&quot;paragraph&quot;&gt;
 &lt;p&gt;다음은 위의 &lt;a href=&quot;#implicit-cont2&quot;&gt;예제 2&lt;/a&gt;. 암묵적 후속문 2를 실체화하고 있다.&lt;/p&gt;
@@ -422,7 +422,7 @@ table#gromit tr:nth-child(3) p { line-height: 1.2; }
 &lt;table&gt;
 &lt;tr&gt;
 &lt;td&gt;&lt;i class=&quot;conum&quot; data-value=&quot;1&quot;&gt;&lt;/i&gt;&lt;b&gt;1&lt;/b&gt;&lt;/td&gt;
-&lt;td&gt;call/cc 호출로 람다 함수가 인자가 되어 인수 f에 바인딩된다. 옅은 보라색 사각형은 사용자 코드를 나타낸다.&lt;/td&gt;
+&lt;td&gt;call/cc 호출로 람다 함수(왼쪽의 빨간 상자)가 인자가 되어 인수 f에 바인딩된다. 옅은 보라색 사각형은 사용자 코드를 나타낸다.&lt;/td&gt;
 &lt;/tr&gt;
 &lt;tr&gt;
 &lt;td&gt;&lt;i class=&quot;conum&quot; data-value=&quot;2&quot;&gt;&lt;/i&gt;&lt;b&gt;2&lt;/b&gt;&lt;/td&gt;
@@ -430,7 +430,7 @@ table#gromit tr:nth-child(3) p { line-height: 1.2; }
 &lt;/tr&gt;
 &lt;tr&gt;
 &lt;td&gt;&lt;i class=&quot;conum&quot; data-value=&quot;3&quot;&gt;&lt;/i&gt;&lt;b&gt;3&lt;/b&gt;&lt;/td&gt;
-&lt;td&gt;f의 호출은 결국 바인딩된 람다 함수의 호출이다.&lt;/td&gt;
+&lt;td&gt;f의 호출은 결국 f에 바인딩된 람다 함수의 호출이다.&lt;/td&gt;
 &lt;/tr&gt;
 &lt;tr&gt;
 &lt;td&gt;&lt;i class=&quot;conum&quot; data-value=&quot;4&quot;&gt;&lt;/i&gt;&lt;b&gt;4&lt;/b&gt;&lt;/td&gt;

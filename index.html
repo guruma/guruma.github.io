@@ -244,16 +244,16 @@ table#gromit tr:nth-child(3) p { line-height: 1.2; }
 <div class="listingblock">
 <div class="title">예제 4. 후속문 실체화 1</div>
 <div class="content">
-<pre class="highlight"><code class="language-javascript" data-lang="javascript">  function add2(x) { c = x + 2; }
+<pre class="highlight"><code class="language-javascript" data-lang="javascript">  function cont_add_2(x) { c = x + 2; }
 
   var a = 10;
   var b = a + 5;
   var c;
-  add2(b)</code></pre>
+  cont_add_2(b)</code></pre>
 </div>
 </div>
 <div class="paragraph">
-<p>암묵적 후속문이었던 <code>var c = b + 2</code>를 <code>add2</code>라는 함수로 실체화하면서 원래 후속문이 있던 자리에서는 <code>add2</code>함수의 호출로 바뀐다.</p>
+<p>암묵적 후속문이었던 <code>var c = b + 2</code>를 <code>cont_add_2</code>라는 함수로 실체화하면서 원래 후속문이 있던 자리에서는 <code>cont_add_2</code>함수의 호출로 바뀐다.</p>
 </div>
 <div class="paragraph">
 <p>다음은 위의 <a href="#implicit-cont2">예제 2</a>. 암묵적 후속문 2를 실체화하고 있다.</p>
@@ -460,7 +460,7 @@ table#gromit tr:nth-child(3) p { line-height: 1.2; }
 <table>
 <tr>
 <td><i class="conum" data-value="1"></i><b>1</b></td>
-<td>call/cc 호출로 람다 함수가 인자가 되어 인수 f에 바인딩된다. 옅은 보라색 사각형은 사용자 코드를 나타낸다.</td>
+<td>call/cc 호출로 람다 함수(왼쪽의 빨간 상자)가 인자가 되어 인수 f에 바인딩된다. 옅은 보라색 사각형은 사용자 코드를 나타낸다.</td>
 </tr>
 <tr>
 <td><i class="conum" data-value="2"></i><b>2</b></td>
@@ -468,7 +468,7 @@ table#gromit tr:nth-child(3) p { line-height: 1.2; }
 </tr>
 <tr>
 <td><i class="conum" data-value="3"></i><b>3</b></td>
-<td>f의 호출은 결국 바인딩된 람다 함수의 호출이다.</td>
+<td>f의 호출은 결국 f에 바인딩된 람다 함수의 호출이다.</td>
 </tr>
 <tr>
 <td><i class="conum" data-value="4"></i><b>4</b></td>
@@ -2051,7 +2051,7 @@ table#gromit tr:nth-child(3) p { line-height: 1.2; }
             </div>
         </div>
     </div>
-    <footer>Copyright &copy; 2019 Park Sang-Kyu
+    <footer>Copyright &copy; 2022 Park Sang-Kyu
         <p style="text-align: center;">Powered by <a href="http://cryogenweb.org">Cryogen</a></p></footer>
 </div>
 <script src="//code.jquery.com/jquery-1.11.0.min.js"></script>
