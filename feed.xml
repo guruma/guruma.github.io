@@ -12,7 +12,7 @@ http://guruma.github.io/
 guruma's Blog
 </description>
 <lastBuildDate>
-Sat, 06 Aug 2022 16:16:10 +0900
+Sat, 06 Aug 2022 16:21:20 +0900
 </lastBuildDate>
 <generator>
 clj-rss
@@ -517,7 +517,7 @@ table#gromit tr:nth-child(3) p { line-height: 1.2; }
 &lt;/div&gt;
 &lt;/div&gt;
 &lt;div class=&quot;paragraph&quot;&gt;
-&lt;p&gt;여기서도 다음과 같이 현행문을 인자로 해서 후속문을 호출하면 결국 원래 코드와 같다 : &lt;code&gt;lambda (v) v) (+ (* 3 4) 5&lt;/code&gt;&lt;/p&gt;
+&lt;p&gt;여기서도 다음과 같이 현행문을 인자로 해서 후속문을 호출하면 결국 원래 코드와 같다 : &lt;code&gt;((lambda (v) v) (+ (* 3 4) 5))&lt;/code&gt;&lt;/p&gt;
 &lt;/div&gt;
 &lt;div class=&quot;paragraph&quot;&gt;
 &lt;p&gt;그러면 &lt;code&gt;5&lt;/code&gt;를 현행문으로 정하면 후속문 함수는 무엇이 될까? 연습으로 여러분의 머릿속에서 직접 생각해보자.&lt;/p&gt;
